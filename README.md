@@ -1,0 +1,2 @@
+# FideLLiTTyAPI
+FideLLiTTy RESTful API
