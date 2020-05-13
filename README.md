@@ -31,8 +31,7 @@ poetry shell
 ```
 
 Then create .env file (or rename and modify .env.example) in project root and set environment variables for application:
-
-````
+```
 touch .env
 echo "PROJECT_NAME=FastAPI RealWorld Application Example" >> .env
 echo DATABASE_URL=mongo://$MONGO_USER:$MONGO_PASSWORD@$MONGO_HOST:$MONGO_PORT/$MONGO_DB >> .env
@@ -41,7 +40,21 @@ echo ALLOWED_HOSTS='"127.0.0.1", "localhost"' >> .env
 ```
 
 ### To run the web application in debug use:
-
 ```
 uvicorn app.main:app --reload
 ```
+
+##Project structure
+
+Files related to application are in the app directory. alembic is directory with sql migrations. Application parts are:
+```
+models  - pydantic models that used in crud or handlers
+crud    - CRUD for types from models (create new user/article/comment, check if user is followed by another, etc)
+db      - db specific utils
+core    - some general components (jwt, security, configuration)
+api     - handlers for routes
+main.py - FastAPI application instance, CORS configuration and api router including
+```
+
+# TO-DO
+1. 
