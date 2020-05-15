@@ -20,6 +20,27 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# app.add_event_handler("startup", connect_to_mongo)
+# app.add_event_handler("shutdown", close_mongo_connection)
+
+
+@app.on_event("startup")
+async def startup():
+    logger.info("Database Startup")
+    await database.connect()
+
+
+@app.on_event("shutdown")
+async def shutdown():
+    logger.info("Database Shutdown")
+    await database.disconnect()
+
+
+# app.add_exception_handler(HTTPException, http_error_handler)
+# app.add_exception_handler(
+# HTTP_422_UNPROCESSABLE_ENTITY, http_422_error_handler)
+
+
 # Dependency
 
 
@@ -31,7 +52,7 @@ def get_db():
         db.close()
 
 
-@app.get('/')
+@app.get("/")
 def home():
     """Get the home
     """

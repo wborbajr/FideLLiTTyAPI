@@ -3,6 +3,8 @@ FideLLiTTy RESTful API
 
 ### MariaDB
 ```
+docker run -p 3306:3306 --rm -d --name api-db -eMARIADB_ROOT_PASSWORD=123mudar pickapp/mariadb-alpine
+or
 docker run -p 3306:3306 --rm -d --name api-db -eMARIADB_ROOT_PASSWORD=123mudar mariadb/server:10.4
 docker ps -l
 docker kill api-db
@@ -10,6 +12,8 @@ docker kill api-db
 
 ### PostgreSQL
 ```
+docker run -p 5432:5432 --rm -d --name api-db -e POSTGRES_PASSWORD=123mudar onjin/alpine-postgres
+or
 docker run -p 5432:5432 --rm -d --name api-db -e POSTGRES_PASSWORD=123mudar postgres
 docker ps -l
 docker kill api-db
@@ -17,6 +21,8 @@ docker kill api-db
 
 ### Mongo
 ```
+docker run -p 27017:27017 --rm -d --name api-db mvertes/alpine-mongo
+or
 docker run -p 27017:27017 --rm -d --name api-db mongo
 docker ps -l
 docker kill api-db
@@ -44,7 +50,7 @@ echo ALLOWED_HOSTS='"127.0.0.1", "localhost"' >> .env
 uvicorn app.main:app --reload
 ```
 
-##Project structure
+### Project structure
 
 Files related to application are in the app directory. alembic is directory with sql migrations. Application parts are:
 ```
@@ -56,5 +62,5 @@ api     - handlers for routes
 main.py - FastAPI application instance, CORS configuration and api router including
 ```
 
-# TO-DO
+### TO-DO
 1. 
