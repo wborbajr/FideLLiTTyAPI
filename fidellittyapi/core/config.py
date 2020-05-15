@@ -1,7 +1,7 @@
 import os
 
-from dynaconf import settings
 from databases import DatabaseURL
+from dynaconf import settings
 
 API_V1_STR = "/api"
 

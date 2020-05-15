@@ -14,14 +14,18 @@ from ....models.user import User, UserInCreate, UserInLogin, UserInResponse
 router = APIRouter()
 
 
-@router.post("/users/login", response_model=UserInResponse, tags=["authentication"])
+@router.post(
+    "/users/login", response_model=UserInResponse, tags=["authentication"]
+)
 async def login(
-        user: UserInLogin = Body(..., embed=True), db: AsyncIOMotorClient = Depends(get_database)
+    user: UserInLogin = Body(..., embed=True),
+    db: AsyncIOMotorClient = Depends(get_database),
 ):
     dbuser = await get_user_by_email(db, user.email)
     if not dbuser or not dbuser.check_password(user.password):
         raise HTTPException(
-            status_code=HTTP_400_BAD_REQUEST, detail="Incorrect email or password"
+            status_code=HTTP_400_BAD_REQUEST,
+            detail="Incorrect email or password",
         )
 
     access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
@@ -38,16 +42,20 @@ async def login(
     status_code=HTTP_201_CREATED,
 )
 async def register(
-        user: UserInCreate = Body(..., embed=True), db: AsyncIOMotorClient = Depends(get_database)
+    user: UserInCreate = Body(..., embed=True),
+    db: AsyncIOMotorClient = Depends(get_database),
 ):
     await check_free_username_and_email(db, user.username, user.email)
 
     async with await db.start_session() as s:
         async with s.start_transaction():
             dbuser = await create_user(db, user)
-            access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
+            access_token_expires = timedelta(
+                minutes=ACCESS_TOKEN_EXPIRE_MINUTES
+            )
             token = create_access_token(
-                data={"username": dbuser.username}, expires_delta=access_token_expires
+                data={"username": dbuser.username},
+                expires_delta=access_token_expires,
             )
 
             return UserInResponse(user=User(**dbuser.dict(), token=token))

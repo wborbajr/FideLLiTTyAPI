@@ -5,7 +5,8 @@ from starlette.exceptions import HTTPException
 from starlette.status import HTTP_422_UNPROCESSABLE_ENTITY
 
 from ....core.jwt import get_current_user_authorizer
-from ....crud.profile import follow_for_user, get_profile_for_user, unfollow_user
+from ....crud.profile import (follow_for_user, get_profile_for_user,
+                              unfollow_user)
 from ....db.mongodb import AsyncIOMotorClient, get_database
 from ....models.profile import ProfileInResponse
 from ....models.user import User
@@ -13,10 +14,14 @@ from ....models.user import User
 router = APIRouter()
 
 
-@router.get("/profiles/{username}", response_model=ProfileInResponse, tags=["profiles"])
+@router.get(
+    "/profiles/{username}", response_model=ProfileInResponse, tags=["profiles"]
+)
 async def retrieve_profile(
     username: str = Path(..., min_length=1),
-    user: Optional[User] = Depends(get_current_user_authorizer(required=False)),
+    user: Optional[User] = Depends(
+        get_current_user_authorizer(required=False)
+    ),
     db: AsyncIOMotorClient = Depends(get_database),
 ):
     profile = await get_profile_for_user(
@@ -27,7 +32,9 @@ async def retrieve_profile(
 
 
 @router.post(
-    "/profiles/{username}/follow", response_model=ProfileInResponse, tags=["profiles"]
+    "/profiles/{username}/follow",
+    response_model=ProfileInResponse,
+    tags=["profiles"],
 )
 async def follow_user(
     username: str = Path(..., min_length=1),
@@ -55,7 +62,9 @@ async def follow_user(
 
 
 @router.delete(
-    "/profiles/{username}/follow", response_model=ProfileInResponse, tags=["profiles"]
+    "/profiles/{username}/follow",
+    response_model=ProfileInResponse,
+    tags=["profiles"],
 )
 async def describe_from_user(
     username: str = Path(..., min_length=1),

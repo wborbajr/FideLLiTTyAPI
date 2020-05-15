@@ -1,15 +1,19 @@
 import logging
 
 from motor.motor_asyncio import AsyncIOMotorClient
-from ..core.config import MONGODB_URL, MAX_CONNECTIONS_COUNT, MIN_CONNECTIONS_COUNT
+
+from ..core.config import (MAX_CONNECTIONS_COUNT, MIN_CONNECTIONS_COUNT,
+                           MONGODB_URL)
 from .mongodb import db
 
 
 async def connect_to_mongo():
     logging.info("连接数据库中...")
-    db.client = AsyncIOMotorClient(str(MONGODB_URL),
-                                   maxPoolSize=MAX_CONNECTIONS_COUNT,
-                                   minPoolSize=MIN_CONNECTIONS_COUNT)
+    db.client = AsyncIOMotorClient(
+        str(MONGODB_URL),
+        maxPoolSize=MAX_CONNECTIONS_COUNT,
+        minPoolSize=MIN_CONNECTIONS_COUNT,
+    )
     logging.info("连接数据库成功！")
 
 

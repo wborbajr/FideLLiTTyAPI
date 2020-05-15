@@ -2,9 +2,9 @@ from typing import Optional
 
 from pydantic import EmailStr, UrlStr
 
+from ..core.security import generate_salt, get_password_hash, verify_password
 from .dbmodel import DBModelMixin
 from .rwmodel import RWModel
-from ..core.security import generate_salt, get_password_hash, verify_password
 
 
 class UserBase(RWModel):

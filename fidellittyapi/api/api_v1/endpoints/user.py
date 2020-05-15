@@ -10,7 +10,9 @@ router = APIRouter()
 
 
 @router.get("/user", response_model=UserInResponse, tags=["users"])
-async def retrieve_current_user(user: User = Depends(get_current_user_authorizer())):
+async def retrieve_current_user(
+    user: User = Depends(get_current_user_authorizer()),
+):
     return UserInResponse(user=user)
 
 
