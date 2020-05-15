@@ -1,0 +1,16 @@
+[default]
+PROJECT_NAME=FideLLiTTy
+
+SECRET_KEY=123456
+
+# ALLOWED_HOSTS='"127.0.0.1", "localhost"'
+ALLOWED_HOSTS='"127.0.0.1", "localhost", "*"'
+
+MONGO_HOST=localhost
+MONGO_PORT=27017
+MONGO_USER=admin
+MONGO_PASSWORD=123mudar
+MONGO_DB=api-db
+
+# [development]
+# DATABASE_URL = "sqlite:///:memory:"
