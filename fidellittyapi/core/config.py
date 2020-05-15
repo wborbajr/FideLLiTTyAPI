@@ -12,7 +12,7 @@ MAX_CONNECTIONS_COUNT = settings.MAX_CONNECTIONS_COUNT
 MIN_CONNECTIONS_COUNT = settings.MIN_CONNECTIONS_COUNT
 SECRET_KEY = settings.SECRET_KEY
 
-PROJECT_NAME = settings.PROJECT_NAME, "FastAPI example application"
+PROJECT_NAME = settings.PROJECT_NAME
 ALLOWED_HOSTS = settings.ALLOWED_HOSTS
 
 MONGODB_URL = settings.MONGODB_URL  # deploying without docker-compose
