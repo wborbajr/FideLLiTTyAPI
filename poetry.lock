@@ -586,7 +586,7 @@ version = "0.15.0"
 h11 = ">=0.8.1"
 
 [metadata]
-content-hash = "038af8f3ee4dd1511c130fa91f3af1a9a4360ccb749bba1f55d9f42880a77f3b"
+content-hash = "185a924e63ec1def74e8a4ac9dc5debfa63663aadade41566623bbf84a031d2b"
 python-versions = "^3.8"
 
 [metadata.files]

@@ -17,6 +17,7 @@ pyjwt = "^1.7"
 slugify = "^0.0.1"
 motor = "^2.1.0"
 dynaconf = "^2.2.3"
+pydantic = "^1.5.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^4.6"
