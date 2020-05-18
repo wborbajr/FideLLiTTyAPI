@@ -1,8 +1,9 @@
 from typing import Optional
 
+from .rwmodel import RWModel
+
 # from pydantic import UrlStr
 
-from .rwmodel import RWModel
 
 
 class Profile(RWModel):

@@ -14,9 +14,7 @@ async def get_user(conn: AsyncIOMotorClient, username: str) -> UserInDB:
         return UserInDB(**row)
 
 
-async def get_user_by_email(
-    conn: AsyncIOMotorClient, email: str
-) -> UserInDB:
+async def get_user_by_email(conn: AsyncIOMotorClient, email: str) -> UserInDB:
     row = await conn[database_name][users_collection_name].find_one(
         {"email": email}
     )
