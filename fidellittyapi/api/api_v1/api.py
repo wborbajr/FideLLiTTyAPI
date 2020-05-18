@@ -7,6 +7,8 @@ from .endpoints.profile import router as profile_router
 from .endpoints.tag import router as tag_router
 from .endpoints.user import router as user_router
 
+from .endpoints.ping import router as pong_router
+
 router = APIRouter()
 router.include_router(auth_router)
 router.include_router(user_router)
@@ -14,3 +16,5 @@ router.include_router(profile_router)
 router.include_router(comment_router)
 router.include_router(article_router)
 router.include_router(tag_router)
+
+router.include_router(pong_router)
