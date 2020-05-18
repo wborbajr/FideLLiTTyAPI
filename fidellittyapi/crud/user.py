@@ -1,5 +1,5 @@
 from bson.objectid import ObjectId
-from pydantic import EmailStr
+from pydantic import BaseModel
 
 from ..core.config import database_name, users_collection_name
 from ..db.mongodb import AsyncIOMotorClient
@@ -15,7 +15,7 @@ async def get_user(conn: AsyncIOMotorClient, username: str) -> UserInDB:
 
 
 async def get_user_by_email(
-    conn: AsyncIOMotorClient, email: EmailStr
+    conn: AsyncIOMotorClient, email: str
 ) -> UserInDB:
     row = await conn[database_name][users_collection_name].find_one(
         {"email": email}
