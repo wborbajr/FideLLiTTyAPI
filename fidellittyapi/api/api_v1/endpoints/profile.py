@@ -5,8 +5,11 @@ from starlette.exceptions import HTTPException
 from starlette.status import HTTP_422_UNPROCESSABLE_ENTITY
 
 from ....core.jwt import get_current_user_authorizer
-from ....crud.profile import (follow_for_user, get_profile_for_user,
-                              unfollow_user)
+from ....crud.profile import (
+    follow_for_user,
+    get_profile_for_user,
+    unfollow_user,
+)
 from ....db.mongodb import AsyncIOMotorClient, get_database
 from ....models.profile import ProfileInResponse
 from ....models.user import User

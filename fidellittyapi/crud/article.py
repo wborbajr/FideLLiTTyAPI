@@ -4,11 +4,19 @@ from typing import List, Optional
 from bson import ObjectId
 from slugify import slugify
 
-from ..core.config import (article_collection_name, database_name,
-                           favorites_collection_name, users_collection_name)
+from ..core.config import (
+    article_collection_name,
+    database_name,
+    favorites_collection_name,
+    users_collection_name,
+)
 from ..db.mongodb import AsyncIOMotorClient
-from ..models.article import (ArticleFilterParams, ArticleInCreate,
-                              ArticleInDB, ArticleInUpdate)
+from ..models.article import (
+    ArticleFilterParams,
+    ArticleInCreate,
+    ArticleInDB,
+    ArticleInUpdate,
+)
 from .profile import get_profile_for_user
 from .tag import create_tags_that_not_exist, get_tags_for_article
 

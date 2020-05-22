@@ -5,7 +5,6 @@ from .rwmodel import RWModel
 # from pydantic import UrlStr
 
 
-
 class Profile(RWModel):
     username: str
     bio: Optional[str] = ""

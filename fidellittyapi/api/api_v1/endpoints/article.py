@@ -3,23 +3,38 @@ from typing import Optional
 from fastapi import APIRouter, Body, Depends, Path, Query
 from slugify import slugify
 from starlette.exceptions import HTTPException
-from starlette.status import (HTTP_201_CREATED, HTTP_204_NO_CONTENT,
-                              HTTP_400_BAD_REQUEST, HTTP_404_NOT_FOUND,
-                              HTTP_422_UNPROCESSABLE_ENTITY)
+from starlette.status import (
+    HTTP_201_CREATED,
+    HTTP_204_NO_CONTENT,
+    HTTP_400_BAD_REQUEST,
+    HTTP_404_NOT_FOUND,
+    HTTP_422_UNPROCESSABLE_ENTITY,
+)
 
 from ....core.jwt import get_current_user_authorizer
 from ....core.utils import create_aliased_response
-from ....crud.article import (add_article_to_favorites, create_article_by_slug,
-                              delete_article_by_slug, get_article_by_slug,
-                              get_articles_with_filters, get_user_articles,
-                              remove_article_from_favorites,
-                              update_article_by_slug)
+from ....crud.article import (
+    add_article_to_favorites,
+    create_article_by_slug,
+    delete_article_by_slug,
+    get_article_by_slug,
+    get_articles_with_filters,
+    get_user_articles,
+    remove_article_from_favorites,
+    update_article_by_slug,
+)
 from ....crud.shortcuts import (
-    check_article_for_existence_and_modifying_permissions, get_article_or_404)
+    check_article_for_existence_and_modifying_permissions,
+    get_article_or_404,
+)
 from ....db.mongodb import AsyncIOMotorClient, get_database
-from ....models.article import (ArticleFilterParams, ArticleInCreate,
-                                ArticleInResponse, ArticleInUpdate,
-                                ManyArticlesInResponse)
+from ....models.article import (
+    ArticleFilterParams,
+    ArticleInCreate,
+    ArticleInResponse,
+    ArticleInUpdate,
+    ManyArticlesInResponse,
+)
 from ....models.user import User
 
 router = APIRouter()

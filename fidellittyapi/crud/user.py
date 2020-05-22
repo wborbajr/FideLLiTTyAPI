@@ -1,9 +1,8 @@
 from bson.objectid import ObjectId
-from pydantic import BaseModel
 
-from ..core.config import database_name, users_collection_name
-from ..db.mongodb import AsyncIOMotorClient
-from ..models.user import UserInCreate, UserInDB, UserInUpdate
+from fidellittyapi.core.config import database_name, users_collection_name
+from fidellittyapi.db.mongodb import AsyncIOMotorClient
+from fidellittyapi.models.user import UserInCreate, UserInDB, UserInUpdate
 
 
 async def get_user(conn: AsyncIOMotorClient, username: str) -> UserInDB:

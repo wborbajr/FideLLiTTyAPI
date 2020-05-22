@@ -1,7 +1,10 @@
 from typing import List
 
-from ..core.config import (article_collection_name, database_name,
-                           tags_collection_name)
+from ..core.config import (
+    article_collection_name,
+    database_name,
+    tags_collection_name,
+)
 from ..db.mongodb import AsyncIOMotorClient
 from ..models.tag import TagInDB
 

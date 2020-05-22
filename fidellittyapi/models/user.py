@@ -1,11 +1,10 @@
 from typing import Optional
 
+from pydantic import EmailStr
+
 from ..core.security import generate_salt, get_password_hash, verify_password
 from .dbmodel import DBModelMixin
 from .rwmodel import RWModel
-
-# from pydantic import EmailStr, UrlStr
-
 
 
 class UserBase(RWModel):
@@ -13,7 +12,6 @@ class UserBase(RWModel):
     email: str
     bio: Optional[str] = ""
     image: Optional[str] = None
-    # image: Optional[UrlStr] = None
 
 
 class UserInDB(DBModelMixin, UserBase):
